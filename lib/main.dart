@@ -38,12 +38,12 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/logo.png', 
+                    'assets/polinema.png',
                     height: 40,
                   ),
                   SizedBox(width: 10),
                   Image.asset(
-                    'assets/polinema.png', 
+                    'assets/logo.png',
                     height: 40, 
                   ),
                   SizedBox(width: 10),
