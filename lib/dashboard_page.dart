@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'drawer.dart'; // File yang berisi drawer
-import 'pengaturan_profil_page.dart'; // Impor halaman lain jika diperlukan
+import 'pengaturan_profil_page.dart';
 
 class DashboardPage extends StatelessWidget {
   @override

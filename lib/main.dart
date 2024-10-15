@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'agenda_kegiatan_page.dart'; // Impor halaman agenda kegiatan
 import 'dashboard_page.dart'; // Impor halaman dashboard
 import 'dokumen_surat_tugas_page.dart'; // Impor halaman dokumen surat tugas
+import 'unggah_draft_surat_tugas_page.dart'; // Impor halaman unggah draft surat tugas
 import 'drawer.dart'; // Impor drawer
 import 'kegiatan_eksternal_page.dart'; // Impor halaman kegiatan eksternal
 import 'laporkan_progress_agenda_page.dart'; // Impor halaman laporan progress agenda
@@ -30,8 +31,9 @@ class MyApp extends StatelessWidget {
         '/kegiatan-eksternal': (context) => KegiatanEksternalPage(),
         // '/laporkan-progress-agenda': (context) => LaporkanProgressAgendaPage(),
         // '/statistik-kinerja': (context) => StatistikKinerjaPage(),
-        // '/dokumen-surat-tugas': (context) => DokumenSuratTugasPage(),
-        // '/pengaturan-profil': (context) => PengaturanProfilPage(),
+        '/dokumen-surat-tugas': (context) => DokumenSuratTugasPage(),
+        '/unggah-draft-surat-tugas': (context) => UnggahDraftSuratTugasPage(), // Tambahkan route baru
+        '/pengaturan-profil': (context) => PengaturanProfilPage(),
       },
     );
   }
