@@ -1,4 +1,4 @@
-name: your_project_name
+name: project
 description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you want to publish to pub.dev
@@ -22,7 +22,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/logo.png
+    - assets/jti.png
     - assets/polinema.png
     - assets/profil.jpg
     - assets/kinerja_dosen_icon.png

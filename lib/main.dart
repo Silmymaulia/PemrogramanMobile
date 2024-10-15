@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/dashboard': (context) => DashboardPage(),
         '/agenda-kegiatan': (context) => AgendaKegiatanPage(),
-        // '/progress-kegiatan': (context) => ProgressKegiatanPage(),
+        '/progress-kegiatan': (context) => ProgressKegiatanPage(),
         '/kegiatan-eksternal': (context) => KegiatanEksternalPage(),
-        // '/laporkan-progress-agenda': (context) => LaporkanProgressAgendaPage(),
+        '/laporkan-progress-agenda': (context) => LaporkanProgressAgendaPage(),
         // '/statistik-kinerja': (context) => StatistikKinerjaPage(),
         '/dokumen-surat-tugas': (context) => DokumenSuratTugasPage(),
         '/unggah-draft-surat-tugas': (context) => UnggahDraftSuratTugasPage(), // Tambahkan route baru
