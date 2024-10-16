@@ -17,6 +17,8 @@ class DokumenSuratTugasPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Color(0xFF11315F), // Warna latar belakang AppBar
+        iconTheme: IconThemeData(color: Colors.white), // Atur warna panah kembali menjadi putih
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
