@@ -25,10 +25,31 @@ class _ProgressKegiatanPageState extends State<ProgressKegiatan2Page> {
   void _updateProgress() {
     setState(() {
       // Update progres dari input pengguna
-      _progressValue = double.tryParse(_progressController.text) ?? _progressValue / 100;
+      _progressValue = (double.tryParse(_progressController.text) ?? _progressValue) / 100;
     });
 
-    // Lakukan tindakan lain untuk memperbarui data (seperti kirim ke backend)
+    // Menampilkan dialog pop-up setelah tombol ditekan
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Sukses'),
+          content: Text(
+            'Progres berhasil diperbarui menjadi ${(_progressValue * 100).toStringAsFixed(0)}%.',
+          ),
+          actions: [
+            TextButton(
+              child: Text('Oke'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Tutup dialog
+              },
+            ),
+          ],
+        );
+      },
+    );
+
+    // Logika lain untuk memperbarui data (misal: kirim ke backend)
     print("Progres diperbarui: ${(_progressValue * 100).toStringAsFixed(0)}%");
     print("Keterangan: ${_keteranganController.text}");
     print("Beban Kerja: $_bebanKerja");

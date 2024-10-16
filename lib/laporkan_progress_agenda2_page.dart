@@ -51,26 +51,35 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgenda2Page
             SizedBox(height: 20), // Jarak sebelum tombol
             // Tombol Laporkan Agenda
             Center(
-             child: ElevatedButton(
-              onPressed: () {
-                // Logika untuk mengirim semua laporan
-                String reportMessage = 'Laporkan Semua Agenda:\n';
-                for (var agenda in agendas) {
-                  reportMessage +=
-                      'Nama: ${agenda.name}, Progress: ${agenda.progress ?? "Belum diisi"}, Keterangan: ${agenda.keterangan ?? "Belum diisi"}, Berkas: ${agenda.filePath ?? "Belum di-upload"}\n';
-                }
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(reportMessage)),
-                );
-              },
-              child: Text('Laporkan Semua Agenda'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF11315F),
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                textStyle: TextStyle(fontSize: 18),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Menampilkan dialog pop-up setelah sukses terkirim
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Sukses'),
+                        content: Text('Laporan agenda telah berhasil terkirim!'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // Menutup dialog
+                            },
+                            child: Text('Oke'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Text('Laporkan Semua Agenda'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF11315F),
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  textStyle: TextStyle(fontSize: 18),
+                ),
               ),
-            ),
             ),
           ],
         ),
