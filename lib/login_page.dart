@@ -41,7 +41,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 8), // Mengurangi jarak antar logo
                     Image(
-                      image: AssetImage('assets/jti.png'),
+                      image: AssetImage('assets/logo.png'),
                       height: 80,
                     ),
                   ],

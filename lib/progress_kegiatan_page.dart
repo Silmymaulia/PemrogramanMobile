@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'progress_kegiatan2_page.dart';
 
-class ProgressKegiatanPage extends StatelessWidget {
+class ProgressKegiatanPage extends StatefulWidget {
+  @override
+  _ProgressKegiatanPageState createState() => _ProgressKegiatanPageState();
+}
+
+class _ProgressKegiatanPageState extends State<ProgressKegiatanPage> {
   final List<String> kegiatanList = [
     'Panitia Akreditasi Jurusan Teknologi Informasi Tahun 2024',
     'Kegiatan Seminar Teknologi Informasi',
@@ -24,6 +29,25 @@ class ProgressKegiatanPage extends StatelessWidget {
     'Kegiatan Penyuluhan Kesehatan',
   ];
 
+  List<String> filteredKegiatanList = [];
+  TextEditingController searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    // Pada awalnya, tampilkan semua kegiatan
+    filteredKegiatanList = kegiatanList;
+  }
+
+  void filterKegiatan(String query) {
+    List<String> filtered = kegiatanList
+        .where((kegiatan) => kegiatan.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    setState(() {
+      filteredKegiatanList = filtered;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +62,27 @@ class ProgressKegiatanPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Teks "Pilihan Kegiatan"
+          // Kolom pencarian
           Padding(
             padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                labelText: 'Cari Kegiatan',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.search),
+              ),
+              onChanged: filterKegiatan, // Setiap perubahan teks akan memfilter kegiatan
+            ),
+          ),
+          // Teks "Pilihan Kegiatan"
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
               'Pilihan Kegiatan',
               style: TextStyle(
-                fontSize: 24, 
-                fontWeight: FontWeight.bold, 
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
                 color: Color(0xFF11315F), // Warna judul
               ),
             ),
@@ -53,14 +90,14 @@ class ProgressKegiatanPage extends StatelessWidget {
           Expanded(
             // Menampung ListView
             child: ListView.builder(
-              itemCount: kegiatanList.length,
+              itemCount: filteredKegiatanList.length,
               itemBuilder: (context, index) {
                 return Card(
                   elevation: 4, // Efek bayangan
                   margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8), // Margin untuk card
                   child: ListTile(
                     title: Text(
-                      kegiatanList[index],
+                      filteredKegiatanList[index],
                       style: TextStyle(
                         fontSize: 18, // Ukuran font
                         color: Colors.black, // Warna teks
@@ -71,7 +108,7 @@ class ProgressKegiatanPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProgressKegiatan2Page(kegiatan: kegiatanList[index]),
+                          builder: (context) => ProgressKegiatan2Page(kegiatan: filteredKegiatanList[index]),
                         ),
                       );
                     },
