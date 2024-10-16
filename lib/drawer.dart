@@ -111,13 +111,6 @@ class AppDrawer extends StatelessWidget {
               Navigator.pushReplacementNamed(context, '/login');
             },
           ),
-          ListTile(
-            leading: Icon(Icons.file_download, color: Color(0xFF11315F)),
-            title: Text('Dokumen Surat Tugas'),
-            onTap: () {
-              Navigator.pushNamed(context, '/dokumen-surat-tugas'); // Tambahkan logika untuk membuka halaman dokumen surat tugas
-            },
-          ),
         ],
       ),
     );

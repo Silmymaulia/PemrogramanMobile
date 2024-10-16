@@ -100,73 +100,82 @@ class AgendaProgressInput extends StatefulWidget {
 class _AgendaProgressInputState extends State<AgendaProgressInput> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 8, // Meningkatkan elevation untuk card
-      margin: EdgeInsets.symmetric(vertical: 8.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12), // Menambahkan sudut melengkung
+    return Container(
+      padding: const EdgeInsets.all(16.0), // Menambahkan padding di sekitar container
+      decoration: BoxDecoration(
+        color: Colors.white, // Warna latar belakang putih
+        borderRadius: BorderRadius.circular(12), // Sudut melengkung
+        border: Border.all(color: Colors.grey.shade300, width: 1), // Menambahkan border abu-abu
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2), // Warna bayangan ringan
+            spreadRadius: 2,
+            blurRadius: 8,
+            offset: Offset(0, 4), // Posisi bayangan
+          ),
+        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Kolom untuk Nama Agenda
-            TextField(
-              enabled: false, // Nonaktifkan input agar tidak dapat diubah
-              decoration: InputDecoration(
-                labelText: 'Nama Agenda',
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: Colors.grey[200],
-              ),
-              controller: TextEditingController(text: widget.agenda.name),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Kolom untuk Nama Agenda
+          TextField(
+            enabled: false, // Nonaktifkan input agar tidak dapat diubah
+            decoration: InputDecoration(
+              labelText: 'Nama Agenda',
+              border: OutlineInputBorder(),
+              filled: true,
+              fillColor: Colors.grey[200],
             ),
-            SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(labelText: 'Progress (%)'),
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                widget.agenda.progress = value;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              maxLines: 3,
-              decoration: InputDecoration(labelText: 'Keterangan'),
-              onChanged: (value) {
-                widget.agenda.keterangan = value;
-              },
-            ),
-            SizedBox(height: 8),
-            ElevatedButton.icon(
-              onPressed: () async {
-                String? result = await FilePicker.platform.pickFiles().then((result) {
-                  if (result != null) {
-                    setState(() {
-                      widget.agenda.filePath = result.files.single.path;
-                    });
-                    return widget.agenda.filePath;
-                  }
-                  return null;
-                });
+            controller: TextEditingController(text: widget.agenda.name),
+          ),
+          SizedBox(height: 8),
+          TextField(
+            decoration: InputDecoration(labelText: 'Progress (%)'),
+            keyboardType: TextInputType.number,
+            onChanged: (value) {
+              widget.agenda.progress = value;
+            },
+          ),
+          SizedBox(height: 8),
+          TextField(
+            maxLines: 3,
+            decoration: InputDecoration(labelText: 'Keterangan'),
+            onChanged: (value) {
+              widget.agenda.keterangan = value;
+            },
+          ),
+          SizedBox(height: 8),
+          ElevatedButton.icon(
+            onPressed: () async {
+              String? result = await FilePicker.platform.pickFiles().then((result) {
                 if (result != null) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Berkas ${widget.agenda.filePath} berhasil dipilih')),
-                  );
+                  setState(() {
+                    widget.agenda.filePath = result.files.single.path;
+                  });
+                  return widget.agenda.filePath;
                 }
-              },
-              icon: Icon(Icons.upload_file), // Menambahkan ikon pada tombol upload
-              label: Text('Unggah Berkas'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF11315F),
-                foregroundColor: Colors.white,
-              ),
+                return null;
+              });
+              if (result != null) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Berkas ${widget.agenda.filePath} berhasil dipilih')),
+                );
+              }
+            },
+            icon: Icon(Icons.upload_file), // Menambahkan ikon pada tombol upload
+            label: Text('Unggah Berkas'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF11315F),
+              foregroundColor: Colors.white,
             ),
-            if (widget.agenda.filePath != null)
-              Text('Berkas yang di-upload: ${widget.agenda.filePath!.split('/').last}'),
-          ],
-        ),
+          ),
+          if (widget.agenda.filePath != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text('Berkas yang di-upload: ${widget.agenda.filePath!.split('/').last}'),
+            ),
+        ],
       ),
     );
   }
