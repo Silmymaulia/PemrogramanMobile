@@ -16,9 +16,13 @@ class AppDrawer extends StatelessWidget {
               children: [
                 Icon(Icons.account_circle, color: Colors.white, size: 80),
                 SizedBox(height: 10),
-                Text(
-                  'Zefanya Tiomora Siagian',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                Flexible( // Tambahkan Flexible agar teks bisa diatur lebih fleksibel
+                  child: Text(
+                    'Zefanya Tiomora Siagian',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    overflow: TextOverflow.ellipsis, // Tambahkan ini
+                    maxLines: 1, // Batasi teks hanya satu baris
+                  ),
                 ),
                 Text(
                   '123456789',
@@ -111,9 +115,9 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.file_download, color: Color(0xFF11315F)),
             title: Text('Dokumen Surat Tugas'),
             onTap: () {
-            Navigator.pushNamed(context, '/dokumen-surat-tugas'); // Tambahkan logika untuk membuka halaman dokumen surat tugas
-          },
-        ),
+              Navigator.pushNamed(context, '/dokumen-surat-tugas'); // Tambahkan logika untuk membuka halaman dokumen surat tugas
+            },
+          ),
         ],
       ),
     );

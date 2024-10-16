@@ -25,6 +25,7 @@ class _AgendaKegiatanPageState extends State<AgendaKegiatanPage> {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Color(0xFF11315F),
+        iconTheme: IconThemeData(color: Colors.white), // Atur warna panah kembali menjadi putih
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -131,9 +132,7 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
           .where((agenda) => agenda['title']!.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
-    
   }
-  
 
   void _showAgendaDialog({int? agendaIndex}) {
     if (agendaIndex != null) {
@@ -265,7 +264,6 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
                     agendaItems.add({
                       'title': agendaTitleController.text,
                       'description': agendaDescriptionController.text,
-                      // Simpan data tambahan di sini
                     });
                     _filterAgendaItems(searchQuery);
                   });
@@ -274,7 +272,6 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
                     agendaItems[agendaIndex] = {
                       'title': agendaTitleController.text,
                       'description': agendaDescriptionController.text,
-                      // Simpan data tambahan di sini
                     };
                     _filterAgendaItems(searchQuery);
                   });
@@ -309,11 +306,11 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
                 });
                 Navigator.of(context).pop();
               },
-              child: Text('Ya'),
+              child: Text('Hapus'),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('Tidak'),
+              child: Text('Batal'),
             ),
           ],
         );
@@ -326,68 +323,56 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.activityName),
-        backgroundColor: Color(0xFF11315F), // Warna latar belakang AppBar
+        backgroundColor: Color(0xFF11315F),
+        iconTheme: IconThemeData(color: Colors.white), // Atur warna panah kembali menjadi putih
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            
-            // Search Field
-            TextField(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
               onChanged: _filterAgendaItems,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search),
-                hintText: 'Pencarian',
+                hintText: 'Cari Agenda',
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
             ),
-             SizedBox(height: 20),
-            Text(
-              'Temukan Penawaran Kegiatan',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20), // Add space between the search field and the button
-
-            // Add Agenda Button
-            ElevatedButton(
-              onPressed: () => _showAgendaDialog(),
-              child: Text('Tambah Agenda'),
-            ),
-            SizedBox(height: 20), // Add space between the button and the list
-
-            // List of filtered agendas
-            Expanded(
-              child: ListView.builder(
-                itemCount: filteredAgendaItems.length,
-                itemBuilder: (context, index) {
-                  final agenda = filteredAgendaItems[index];
-                  return Card(
-                    margin: EdgeInsets.symmetric(vertical: 8.0),
-                    child: ListTile(
-                      title: Text(agenda['title']!),
-                      subtitle: Text(agenda['description']!),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () => _showAgendaDialog(agendaIndex: index),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.delete),
-                            onPressed: () => _confirmDeleteAgenda(index),
-                          ),
-                        ],
-                      ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: filteredAgendaItems.length,
+              itemBuilder: (context, index) {
+                final agenda = filteredAgendaItems[index];
+                return Card(
+                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: ListTile(
+                    title: Text(agenda['title']!),
+                    subtitle: Text(agenda['description']!),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.edit, color: Colors.blue),
+                          onPressed: () => _showAgendaDialog(agendaIndex: index),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => _confirmDeleteAgenda(index),
+                        ),
+                      ],
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showAgendaDialog(),
+        child: Icon(Icons.add),
+        backgroundColor: Color(0xFF11315F),
       ),
     );
   }
@@ -395,7 +380,6 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
 
 void main() {
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
     home: AgendaKegiatanPage(),
   ));
 }
