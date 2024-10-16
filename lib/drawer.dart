@@ -85,7 +85,7 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.upload_file, color: Color(0xFF11315F)), // Ikon untuk unggah
-            title: Text('Unggah Draft Surat Tugas'), // Judul untuk unggah draft
+            title: Text('Unggah Surat Tugas'), // Judul untuk unggah draft
             onTap: () {
               // Arahkan ke halaman unggah draft surat tugas
               Navigator.pushNamed(context, '/unggah-draft-surat-tugas');
@@ -101,19 +101,12 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.logout, color: Color(0xFF11315F)),
-            title: Text('Logout'),
+            title: Text('Keluar'),
             onTap: () {
               // Mengarahkan pengguna kembali ke halaman login
               Navigator.pushReplacementNamed(context, '/login');
             },
           ),
-          ListTile(
-            leading: Icon(Icons.file_download, color: Color(0xFF11315F)),
-            title: Text('Dokumen Surat Tugas'),
-            onTap: () {
-            Navigator.pushNamed(context, '/dokumen-surat-tugas'); // Tambahkan logika untuk membuka halaman dokumen surat tugas
-          },
-        ),
         ],
       ),
     );

@@ -1,165 +1,115 @@
 import 'package:flutter/material.dart';
-import 'drawer.dart'; // File yang berisi drawer
-import 'pengaturan_profil_page.dart';
 
-class DashboardPage extends StatelessWidget {
+class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            const SizedBox(width: 5), // Jarak antara judul dan logo
-            Image.asset(
-              'assets/polinema.png', // Path ke logo Polinema
-              height: 30, // Ukuran logo Polinema
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Color(0xFF11315F),
             ),
-            const SizedBox(width: 8), // Jarak antara logo Polinema dan logo aplikasi
-            Image.asset(
-              'assets/logo.png', // Path ke logo aplikasi
-              height: 30, // Ukuran logo aplikasi
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.account_circle, color: Colors.white, size: 80),
+                SizedBox(height: 10),
+                Flexible( // Tambahkan Flexible agar teks bisa diatur lebih fleksibel
+                  child: Text(
+                    'Zefanya Tiomora Siagian',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    overflow: TextOverflow.ellipsis, // Tambahkan ini
+                    maxLines: 1, // Batasi teks hanya satu baris
+                  ),
+                ),
+                Text(
+                  '123456789',
+                  style: TextStyle(color: Colors.white70),
+                ),
+              ],
             ),
-            const SizedBox(width: 8), // Jarak antara logo dan judul
-            const Text(
-              'SIM SDM JTI',
-              style: TextStyle(color: Colors.white), // Warna putih untuk teks di app bar
-            ),
-          ],
-        ),
-        backgroundColor: const Color(0xFF11315F), // Warna biru utama
-        iconTheme: const IconThemeData(color: Colors.white), // Mengatur warna ikon di AppBar
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.account_circle),
-            onPressed: () {
+          ),
+          ExpansionTile(
+            leading: Icon(Icons.event_note, color: Color(0xFF11315F)),
+            title: Text('Manajemen Kegiatan'),
+            children: <Widget>[
+              ListTile(
+                title: Text('Agenda Kegiatan'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/agenda-kegiatan');
+                },
+              ),
+              ListTile(
+                title: Text('Progress Kegiatan'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/progress-kegiatan');
+                },
+              ),
+              ListTile(
+                title: Text('Kegiatan Eksternal'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/kegiatan-eksternal');
+                },
+              ),
+            ],
+          ),
+          ExpansionTile(
+            leading: Icon(Icons.list, color: Color(0xFF11315F)),
+            title: Text('Daftar Kegiatan'),
+            children: <Widget>[
+              ListTile(
+                title: Text('Laporkan Progress Agenda'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/laporkan-progress-agenda');
+                },
+              ),
+              ListTile(
+                title: Text('Detail Kegiatan'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/detail-kegiatan');
+                },
+              ),
+            ],
+          ),
+          ListTile(
+            leading: Icon(Icons.bar_chart, color: Color(0xFF11315F)),
+            title: Text('Statistik Kinerja'),
+            onTap: () {
+              Navigator.pushNamed(context, '/statistik-kinerja');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.file_download, color: Color(0xFF11315F)),
+            title: Text('Dokumen Draft Surat Tugas'),
+            onTap: () {
+              Navigator.pushNamed(context, '/dokumen-surat-tugas');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.upload_file, color: Color(0xFF11315F)), // Ikon untuk unggah
+            title: Text('Unggah Surat Tugas'), // Judul untuk unggah draft
+            onTap: () {
+              // Arahkan ke halaman unggah draft surat tugas
+              Navigator.pushNamed(context, '/unggah-draft-surat-tugas');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.person, color: Color(0xFF11315F)),
+            title: Text('Pengaturan Profil'),
+            onTap: () {
               Navigator.pushNamed(context, '/pengaturan-profil');
             },
           ),
-        ],
-      ),
-      drawer: AppDrawer(), // Drawer untuk sidebar
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Zefanya Tiomora Siagian | 123456789',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'SELAMAT DATANG',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-
-            // Container untuk Notifikasi
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Color(0xFF11315F)), // Garis tepi
-                borderRadius: BorderRadius.circular(8.0), // Sudut membulat
-              ),
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Pemberitahuan Baru
-                  Text(
-                    'Pemberitahuan Baru',
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.notifications, color: Color(0xFF11315F)),
-                      title: const Text('Panitia Akreditasi Jurusan Teknologi Informasi Tahun 2024'),
-                      trailing: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/detail-kegiatan');
-                        },
-                        child: const Text('Detail'),
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.notifications, color: Color(0xFF11315F)),
-                      title: const Text('Panitia Expo Dies Natalis Polinema Tahun 2024'),
-                      trailing: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/detail-kegiatan');
-                        },
-                        child: const Text('Detail'),
-                      ),
-                    ),
-                  ),
-                  
-                  const SizedBox(height: 10), // Jarak antar kategori
-                  
-                  // Agenda yang Harus Segera Dilakukan
-                  Text(
-                    'Agenda yang Harus Segera Dilakukan',
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.calendar_today, color: Color(0xFF11315F)),
-                      title: const Text('Rapat Panitia Skripsi 2024'),
-                      subtitle: const Text('Tanggal: 20 Oktober 2024'),
-                      trailing: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/detail-agenda');
-                        },
-                        child: const Text('Detail'),
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.calendar_today, color: Color(0xFF11315F)),
-                      title: const Text('Ujian Akhir Semester 2024'),
-                      subtitle: const Text('Tanggal: 30 Oktober 2024'),
-                      trailing: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/detail-agenda');
-                        },
-                        child: const Text('Detail'),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFF11315F),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        onTap: (index) {
-          // Aksi ketika item bottom navigation ditekan
-          if (index == 0) {
-            Navigator.pushNamed(context, '/dashboard');
-          } else if (index == 1) {
-            Navigator.pushNamed(context, '/agenda');
-          } else if (index == 2) {
-            Navigator.pushNamed(context, '/settings');
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Dashboard',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: 'Agenda',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Pengaturan',
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.logout, color: Color(0xFF11315F)),
+            title: Text('Logout'),
+            onTap: () {
+              // Mengarahkan pengguna kembali ke halaman login
+              Navigator.pushReplacementNamed(context, '/login');
+            },
           ),
         ],
       ),
