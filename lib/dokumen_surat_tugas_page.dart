@@ -12,8 +12,13 @@ class DokumenSuratTugasPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dokumen Surat Tugas'),
+       title: Text(
+          'Dokumen Surat Tugas',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Color(0xFF11315F), // Warna latar belakang AppBar
+        iconTheme: IconThemeData(color: Colors.white), // Atur warna panah kembali menjadi putih
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -41,8 +46,7 @@ class DokumenSuratTugasPage extends StatelessWidget {
 
   void _unduhSuratTugas(String filePath) {
     // Logika untuk mengunduh surat tugas
-    // Anda bisa menggunakan package seperti dio atau http untuk mengunduh file
     print('Mengunduh surat tugas dari: $filePath');
-    // Implementasikan logika pengunduhan sesuai kebutuhan Anda
+    //logika pengunduhan sesuai kebutuhan Anda
   }
 }

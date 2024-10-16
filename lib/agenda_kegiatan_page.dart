@@ -22,9 +22,11 @@ class _AgendaKegiatanPageState extends State<AgendaKegiatanPage> {
       appBar: AppBar(
         title: Text(
           'Agenda Kegiatan',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white), // Warna teks putih
         ),
-        backgroundColor: Color(0xFF11315F),
+        backgroundColor: Color(0xFF11315F), // Warna latar belakang AppBar
+        iconTheme: IconThemeData(color: Colors.white), // Atur warna panah kembali menjadi putih
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -131,9 +133,7 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
           .where((agenda) => agenda['title']!.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
-    
   }
-  
 
   void _showAgendaDialog({int? agendaIndex}) {
     if (agendaIndex != null) {
@@ -333,8 +333,6 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
-            // Search Field
             TextField(
               onChanged: _filterAgendaItems,
               decoration: InputDecoration(
@@ -343,21 +341,7 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               ),
             ),
-             SizedBox(height: 20),
-            Text(
-              'Temukan Penawaran Kegiatan',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20), // Add space between the search field and the button
-
-            // Add Agenda Button
-            ElevatedButton(
-              onPressed: () => _showAgendaDialog(),
-              child: Text('Tambah Agenda'),
-            ),
-            SizedBox(height: 20), // Add space between the button and the list
-
-            // List of filtered agendas
+            SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: filteredAgendaItems.length,
@@ -386,6 +370,10 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
                 },
               ),
             ),
+            ElevatedButton(
+              onPressed: () => _showAgendaDialog(),
+              child: Text('Tambah Agenda'),
+            ),
           ],
         ),
       ),
@@ -393,9 +381,3 @@ class _AgendaDetailPageState extends State<AgendaDetailPage> {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: AgendaKegiatanPage(),
-  ));
-}
