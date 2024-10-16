@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         '/progress-kegiatan': (context) => ProgressKegiatanPage(),
         '/kegiatan-eksternal': (context) => KegiatanEksternalPage(),
         '/laporkan-progress-agenda': (context) => LaporkanProgressAgendaPage(),
-        // '/statistik-kinerja': (context) => StatistikKinerjaPage(),
+        '/statistik-kinerja': (context) => StatistikKinerjaPage(),
         '/dokumen-surat-tugas': (context) => DokumenSuratTugasPage(),
         '/unggah-draft-surat-tugas': (context) => UnggahDraftSuratTugasPage(), // Tambahkan route baru
         '/pengaturan-profil': (context) => PengaturanProfilPage(),
