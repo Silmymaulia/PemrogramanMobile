@@ -15,7 +15,7 @@ class UnggahDraftSuratTugasPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
          title: Text(
-          'Agenda Kegiatan',
+          'Unggah Draft Surat Tugas',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Color(0xFF11315F),
