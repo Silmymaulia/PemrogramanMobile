@@ -14,7 +14,8 @@ class DashboardPage extends StatelessWidget {
               'assets/polinema.png', // Path ke logo Polinema
               height: 30, // Ukuran logo Polinema
             ),
-            const SizedBox(width: 8), // Jarak antara logo Polinema dan logo aplikasi
+            const SizedBox(
+                width: 8), // Jarak antara logo Polinema dan logo aplikasi
             Image.asset(
               'assets/logo.png', // Path ke logo aplikasi
               height: 30, // Ukuran logo aplikasi
@@ -22,12 +23,14 @@ class DashboardPage extends StatelessWidget {
             const SizedBox(width: 8), // Jarak antara logo dan judul
             const Text(
               'SIM SDM JTI',
-              style: TextStyle(color: Colors.white), // Warna putih untuk teks di app bar
+              style: TextStyle(
+                  color: Colors.white), // Warna putih untuk teks di app bar
             ),
           ],
         ),
         backgroundColor: const Color(0xFF11315F), // Warna biru utama
-        iconTheme: const IconThemeData(color: Colors.white), // Mengatur warna ikon di AppBar
+        iconTheme: const IconThemeData(
+            color: Colors.white), // Mengatur warna ikon di AppBar
         actions: [
           IconButton(
             icon: const Icon(Icons.account_circle),
@@ -68,12 +71,15 @@ class DashboardPage extends StatelessWidget {
                   // Pemberitahuan Baru
                   Text(
                     'Pemberitahuan Baru',
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Card(
                     child: ListTile(
-                      leading: const Icon(Icons.notifications, color: Color(0xFF11315F)),
-                      title: const Text('Panitia Akreditasi Jurusan Teknologi Informasi Tahun 2024'),
+                      leading: const Icon(Icons.notifications,
+                          color: Color(0xFF11315F)),
+                      title: const Text(
+                          'Panitia Akreditasi Jurusan Teknologi Informasi Tahun 2024'),
                       trailing: TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, '/detail-kegiatan');
@@ -84,8 +90,10 @@ class DashboardPage extends StatelessWidget {
                   ),
                   Card(
                     child: ListTile(
-                      leading: const Icon(Icons.notifications, color: Color(0xFF11315F)),
-                      title: const Text('Panitia Expo Dies Natalis Polinema Tahun 2024'),
+                      leading: const Icon(Icons.notifications,
+                          color: Color(0xFF11315F)),
+                      title: const Text(
+                          'Panitia Expo Dies Natalis Polinema Tahun 2024'),
                       trailing: TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, '/detail-kegiatan');
@@ -94,17 +102,19 @@ class DashboardPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                   const SizedBox(height: 10), // Jarak antar kategori
-                  
+
                   // Agenda yang Harus Segera Dilakukan
                   Text(
                     'Agenda yang Harus Segera Dilakukan',
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Card(
                     child: ListTile(
-                      leading: const Icon(Icons.calendar_today, color: Color(0xFF11315F)),
+                      leading: const Icon(Icons.calendar_today,
+                          color: Color(0xFF11315F)),
                       title: const Text('Rapat Panitia Skripsi 2024'),
                       subtitle: const Text('Tanggal: 20 Oktober 2024'),
                       trailing: TextButton(
@@ -117,7 +127,8 @@ class DashboardPage extends StatelessWidget {
                   ),
                   Card(
                     child: ListTile(
-                      leading: const Icon(Icons.calendar_today, color: Color(0xFF11315F)),
+                      leading: const Icon(Icons.calendar_today,
+                          color: Color(0xFF11315F)),
                       title: const Text('Ujian Akhir Semester 2024'),
                       subtitle: const Text('Tanggal: 30 Oktober 2024'),
                       trailing: TextButton(
@@ -143,9 +154,7 @@ class DashboardPage extends StatelessWidget {
           if (index == 0) {
             Navigator.pushNamed(context, '/dashboard');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/agenda');
-          } else if (index == 2) {
-            Navigator.pushNamed(context, '/settings');
+            Navigator.pushNamed(context, '/dashboard');
           }
         },
         items: const [
@@ -155,11 +164,7 @@ class DashboardPage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
-            label: 'Agenda',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Pengaturan',
+            label: 'Beranda',
           ),
         ],
       ),
