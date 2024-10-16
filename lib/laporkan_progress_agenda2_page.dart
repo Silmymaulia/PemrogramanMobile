@@ -29,17 +29,16 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgenda2Page
         iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Container(
-        color: Colors.grey[100], // Mengatur warna latar belakang
+        color: Colors.grey[100],
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Menampilkan nama kegiatan
             Text(
               'Kegiatan: ${widget.kegiatan}',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF11315F)),
             ),
-            SizedBox(height: 20), // Jarak sebelum daftar agenda
+            SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: agendas.length,
@@ -48,12 +47,10 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgenda2Page
                 },
               ),
             ),
-            SizedBox(height: 20), // Jarak sebelum tombol
-            // Tombol Laporkan Agenda
+            SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Menampilkan dialog pop-up setelah sukses terkirim
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -63,7 +60,7 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgenda2Page
                         actions: [
                           TextButton(
                             onPressed: () {
-                              Navigator.of(context).pop(); // Menutup dialog
+                              Navigator.of(context).pop();
                             },
                             child: Text('Oke'),
                           ),
@@ -110,26 +107,25 @@ class _AgendaProgressInputState extends State<AgendaProgressInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0), // Menambahkan padding di sekitar container
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.white, // Warna latar belakang putih
-        borderRadius: BorderRadius.circular(12), // Sudut melengkung
-        border: Border.all(color: Colors.grey.shade300, width: 1), // Menambahkan border abu-abu
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade300, width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2), // Warna bayangan ringan
+            color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 8,
-            offset: Offset(0, 4), // Posisi bayangan
+            offset: Offset(0, 4),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Kolom untuk Nama Agenda
           TextField(
-            enabled: false, // Nonaktifkan input agar tidak dapat diubah
+            enabled: false,
             decoration: InputDecoration(
               labelText: 'Nama Agenda',
               border: OutlineInputBorder(),
@@ -172,7 +168,7 @@ class _AgendaProgressInputState extends State<AgendaProgressInput> {
                 );
               }
             },
-            icon: Icon(Icons.upload_file), // Menambahkan ikon pada tombol upload
+            icon: Icon(Icons.upload_file),
             label: Text('Unggah Berkas'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xFF11315F),

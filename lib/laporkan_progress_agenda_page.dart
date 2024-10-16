@@ -35,7 +35,6 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgendaPage>
   @override
   void initState() {
     super.initState();
-    // Pada awalnya, tampilkan semua kegiatan
     filteredKegiatanList = kegiatanList;
   }
 
@@ -54,15 +53,14 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgendaPage>
       appBar: AppBar(
         title: Text(
           'Progress Agenda',
-          style: TextStyle(color: Colors.white), // Mengubah warna teks menjadi putih
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xFF11315F), // Warna biru utama
+        backgroundColor: Color(0xFF11315F),
         iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Kolom pencarian
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
@@ -72,10 +70,9 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgendaPage>
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.search),
               ),
-              onChanged: filterKegiatan, // Setiap perubahan teks akan memfilter kegiatan
+              onChanged: filterKegiatan,
             ),
           ),
-          // Teks "Pilihan Kegiatan"
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
@@ -83,28 +80,26 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgendaPage>
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF11315F), // Warna judul
+                color: Color(0xFF11315F),
               ),
             ),
           ),
           Expanded(
-            // Menampung ListView
             child: ListView.builder(
               itemCount: filteredKegiatanList.length,
               itemBuilder: (context, index) {
                 return Card(
-                  elevation: 4, // Efek bayangan
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8), // Margin untuk card
+                  elevation: 4,
+                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: ListTile(
                     title: Text(
                       filteredKegiatanList[index],
                       style: TextStyle(
-                        fontSize: 18, // Ukuran font
-                        color: Colors.black, // Warna teks
+                        fontSize: 18,
+                        color: Colors.black,
                       ),
                     ),
                     onTap: () {
-                      // Navigasi ke halaman LaporkanProgressAgenda2Page dengan nama kegiatan
                       Navigator.push(
                         context,
                         MaterialPageRoute(
