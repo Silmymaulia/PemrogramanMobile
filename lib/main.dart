@@ -10,6 +10,7 @@ import 'login_page.dart'; // Impor halaman login
 import 'pengaturan_profil_page.dart'; // Impor halaman pengaturan profil
 import 'progress_kegiatan_page.dart'; // Impor halaman progress kegiatan
 import 'statistik_kinerja_page.dart'; // Impor halaman statistik kinerja
+import 'detail_kegiatan_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/dokumen-surat-tugas': (context) => DokumenSuratTugasPage(),
         '/unggah-draft-surat-tugas': (context) => UnggahDraftSuratTugasPage(), // Tambahkan route baru
         '/pengaturan-profil': (context) => PengaturanProfilPage(),
+
       },
     );
   }
