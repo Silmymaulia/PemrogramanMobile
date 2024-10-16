@@ -74,7 +74,7 @@ class _ProgressKegiatanPageState extends State<ProgressKegiatan2Page> {
 
             // Timeline Kegiatan (daftar agenda)
             Text(
-              'Timeline:',
+              'Agenda:',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Card(
@@ -188,7 +188,7 @@ class _ProgressKegiatanPageState extends State<ProgressKegiatan2Page> {
             // Tombol untuk memperbarui progres
             ElevatedButton(
               onPressed: _updateProgress,
-              child: Text('Update Progress'),
+              child: Text('Perbarui Progress'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF11315F), // Warna latar belakang tombol
                 foregroundColor: Colors.white, // Warna teks tombol

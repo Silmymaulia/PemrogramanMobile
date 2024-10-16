@@ -50,7 +50,8 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgenda2Page
             ),
             SizedBox(height: 20), // Jarak sebelum tombol
             // Tombol Laporkan Agenda
-            ElevatedButton(
+            Center(
+             child: ElevatedButton(
               onPressed: () {
                 // Logika untuk mengirim semua laporan
                 String reportMessage = 'Laporkan Semua Agenda:\n';
@@ -69,6 +70,7 @@ class _LaporkanProgressAgendaPageState extends State<LaporkanProgressAgenda2Page
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 textStyle: TextStyle(fontSize: 18),
               ),
+            ),
             ),
           ],
         ),
@@ -155,7 +157,7 @@ class _AgendaProgressInputState extends State<AgendaProgressInput> {
                 }
               },
               icon: Icon(Icons.upload_file), // Menambahkan ikon pada tombol upload
-              label: Text('Upload Berkas'),
+              label: Text('Unggah Berkas'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF11315F),
                 foregroundColor: Colors.white,
